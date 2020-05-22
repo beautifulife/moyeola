@@ -3,19 +3,8 @@ import logger from 'morgan';
 import schema from './schema';
 
 const PORT = process.env.PORT;
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`;
 
-const resolvers = {
-  Query: {
-    hello: (_: null, { name }: { name: String }) => `Hello ${name || 'World'}`,
-  },
-};
-
-const server = new GraphQLServer({ typeDefs, resolvers });
+const server = new GraphQLServer({ schema });
 
 server.express.use(logger('dev'));
 
