@@ -1,0 +1,35 @@
+{
+  "name": "moyeola-server",
+  "version": "0.1.0",
+  "description": "moyeola server part",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "dotenv -e .env nodemon -e ts,graphql -x ts-node src/server.ts",
+    "build": "tsc",
+    "start": "NODE_ENV=production node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beautifulife/moyeola.git"
+  },
+  "author": "beautifulife",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beautifulife/moyeola/issues"
+  },
+  "homepage": "https://github.com/beautifulife/moyeola#readme",
+  "dependencies": {
+    "@types/morgan": "^1.9.0",
+    "graphql-yoga": "^1.18.3",
+    "merge-graphql-schemas": "^1.7.8",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^3.1.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.3"
+  }
+}
