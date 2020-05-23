@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "dotenv -e .env nodemon -e ts,graphql -x ts-node src/server.ts",
     "build": "tsc",
-    "start": "NODE_ENV=production node dist/index.js"
+    "start": "NODE_ENV=production node dist/index.js",
+    "generate-codegen": "graphql-codegen --config codegen.yml",
+    "deploy-prisma": "prisma deploy"
   },
   "repository": {
     "type": "git",
@@ -20,17 +22,21 @@
   },
   "homepage": "https://github.com/beautifulife/moyeola#readme",
   "dependencies": {
-    "@types/morgan": "^1.9.0",
     "graphql-yoga": "^1.18.3",
     "merge-graphql-schemas": "^1.7.8",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "@types/morgan": "^1.9.0",
+    "@graphql-codegen/cli": "1.14.0",
     "@prisma/cli": "^2.0.0-beta.5",
     "dotenv-cli": "^3.1.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.1",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "@graphql-codegen/typescript": "1.14.0",
+    "@graphql-codegen/typescript-resolvers": "1.14.0",
+    "@graphql-codegen/introspection": "1.14.0"
   }
 }

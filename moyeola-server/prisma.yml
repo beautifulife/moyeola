@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/seungukkim-2cffc7/moyeola-server/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: typescript-client
+    output: ./generated/prisma-client/

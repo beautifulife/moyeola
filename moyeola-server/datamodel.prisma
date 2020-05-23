@@ -1,0 +1,57 @@
+type User {
+  id: ID! @id
+  avatar: String
+    @default(
+      value: "https://scontent-hkg3-1.cdninstagram.com/vp/51ea9f9……74447047_1561961433825017856_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com"
+    )
+  userName: String! @unique
+  email: String! @unique
+  firstName: String
+  lastName: String
+  fullName: String
+  events: [Event!]! @relation(name: "EventsOfUser")
+  likes: [Like!]! @relation(name: "LikesOfUser")
+  comments: [Comment!]! @relation(name: "CommentsOfUser")
+  reputation: Float!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Event {
+  id: ID! @id
+  name: String!
+  location: String!
+  host: User! @relation(name: "HostUser")
+  joinUsers: [User!]! @relation(name: "EventsOfUser")
+  limitCount: Int!
+  tag: Tag @relation(name: "EventsOfTag")
+  likes: [Like!]! @relation(name: "LikesOfEvent", onDelete: CASCADE)
+  comments: [Comment!]! @relation(name: "CommentsOfEvent", onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Tag {
+  id: ID! @id
+  name: String!
+  events: [Event!]! @relation(name: "EventsOfTag")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Comment {
+  id: ID! @id
+  text: String!
+  user: User! @relation(name: "CommentsOfUser")
+  event: Event! @relation(name: "CommentsOfEvent")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Like {
+  id: ID! @id
+  user: User! @relation(name: "LikesOfUser")
+  event: Event! @relation(name: "LikesOfEvent")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

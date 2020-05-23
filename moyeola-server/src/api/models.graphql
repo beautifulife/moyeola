@@ -1,0 +1,58 @@
+type User {
+  id: ID!
+  avatar: String
+  userName: String!
+  email: String!
+  firstName: String
+  lastName: String
+  fullName: String
+  isSelf: Boolean!
+  events: [Event!]!
+  eventsCount: Int!
+  likes: [Like!]!
+  comments: [Comment!]!
+  reputation: Float!
+  createdAt: String
+  updatedAt: String
+}
+
+type Event {
+  id: ID!
+  name: String!
+  location: String!
+  host: User!
+  joinUsers: [User!]!
+  joinUsersCount: Int!
+  limitCount: Int!
+  leftCount: Int!
+  tag: Tag!
+  likes: Like!
+  comments: Comment!
+  createdAt: String
+  updatedAt: String
+}
+
+type Tag {
+  id: ID!
+  name: String!
+  events: [Event!]!
+  createdAt: String
+  updatedAt: String
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  user: User!
+  event: Event!
+  createdAt: String
+  updatedAt: String
+}
+
+type Like {
+  id: ID!
+  user: User!
+  event: Event!
+  createdAt: String
+  updatedAt: String
+}
