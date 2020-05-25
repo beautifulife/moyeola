@@ -3,9 +3,6 @@ type User {
   avatar: String
   userName: String!
   email: String!
-  firstName: String
-  lastName: String
-  fullName: String
   isSelf: Boolean!
   events: [Event!]!
   eventsCount: Int!
@@ -55,4 +52,9 @@ type Like {
   event: Event!
   createdAt: String
   updatedAt: String
+}
+
+type Tokens {
+  refreshToken: String!
+  accessToken: String!
 }

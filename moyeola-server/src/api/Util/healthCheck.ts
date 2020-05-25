@@ -1,5 +1,9 @@
+import { QueryResolvers } from '../../generated/graphql';
+
+const hello: QueryResolvers['hello'] = (_, { name }) => `Hello ${name || 'World'}`;
+
 export default {
   Query: {
-    hello: (_: null, { name }: { name: string }) => `Hello ${name || 'World'}`,
+    hello,
   },
 };

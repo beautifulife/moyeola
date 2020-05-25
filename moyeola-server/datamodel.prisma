@@ -6,9 +6,6 @@ type User {
     )
   userName: String! @unique
   email: String! @unique
-  firstName: String
-  lastName: String
-  fullName: String
   events: [Event!]! @relation(name: "EventsOfUser")
   likes: [Like!]! @relation(name: "LikesOfUser")
   comments: [Comment!]! @relation(name: "CommentsOfUser")
