@@ -13,7 +13,7 @@ const verifyUser: VerifyCallback = async (payload, done) => {
   try {
     const user = await prisma.user({ id: payload.id });
     if (user !== null) {
-      return done(null, user);
+      return done(null, { user, type: payload.type });
     } else {
       return done(null, false);
     }
@@ -23,9 +23,12 @@ const verifyUser: VerifyCallback = async (payload, done) => {
 };
 
 export const authenticateJwt = (req: Request, res: Response, next: NextFunction) =>
-  passport.authenticate('jwt', { session: false }, (error, user) => {
-    if (user) {
-      req.user = user;
+  passport.authenticate('jwt', { session: false }, (error, payload) => {
+    if (payload) {
+      req.user = {
+        ...payload.user,
+        type: payload.type,
+      };
     }
     next();
   })(req, res, next);

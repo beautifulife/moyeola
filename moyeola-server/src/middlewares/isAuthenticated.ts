@@ -5,6 +5,7 @@ const isAuthenticated = (request: Request, type: string = 'accessToken') => {
     throw Error('You need to log-in to perform this action');
   }
 
+  console.log(request.user, type);
   if (request.user.type !== type) {
     throw Error('You need to use right token to perform this action');
   }

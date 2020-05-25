@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "dotenv -e .env nodemon -e ts,graphql -x ts-node src/server.ts",
+    "dev": "dotenv -e .env nodemon -e ts,graphql -x ts-node --files src/server.ts",
     "build": "tsc",
     "start": "NODE_ENV=production node dist/index.js",
     "generate-codegen": "graphql-codegen --config codegen.yml",
