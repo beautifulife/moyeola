@@ -1,8 +1,7 @@
-import { Prisma } from '../../../../generated/prisma-client';
 import { generateTokens } from '../../../utils';
 import { MutationResolvers } from '../../../generated/graphql';
 
-const login: MutationResolvers['login'] = async (_, args, { prisma }: { prisma: Prisma }) => {
+const login: MutationResolvers['login'] = async (_, args, { prisma }) => {
   let user = await prisma.user({ email: args.email });
   if (!user?.email) {
     user = await prisma.createUser({
