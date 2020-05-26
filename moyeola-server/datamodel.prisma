@@ -30,7 +30,7 @@ type Event {
 
 type Tag {
   id: ID! @id
-  name: String!
+  name: String! @unique
   events: [Event!]! @relation(name: "EventsOfTag")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
