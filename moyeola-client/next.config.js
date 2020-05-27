@@ -3,6 +3,7 @@ const withSourceMaps = require('@zeit/next-source-maps')({
   devtool:
     process.env.NODE_ENV === 'production' ? 'hidden-source-map' : 'source-map',
 });
+const withPlugins = require('next-compose-plugins');
 // const {parsed: localEnv} = require('dotenv').config();
 // const configFile = require('./config.json');
 // const packageJson = require('./package.json');
@@ -16,4 +17,4 @@ const config = {
   },
 };
 
-module.exports = withSourceMaps(config);
+module.exports = withPlugins([withSourceMaps], config);
